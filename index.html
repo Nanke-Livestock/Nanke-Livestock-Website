@@ -110,6 +110,11 @@
 
   nav .nav-logo {
     height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(60, 200, 200, 0.4);
+    padding: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    object-fit: cover;
   }
 
   nav .nav-links {
@@ -178,11 +183,16 @@
   }
 
   .hero .logo {
-    max-width: 380px;
-    width: 85%;
+    max-width: 260px;
+    width: 60%;
     margin-bottom: 28px;
     animation: fadeIn 1s ease;
-    filter: drop-shadow(0 4px 20px rgba(60,200,200,0.15));
+    filter: drop-shadow(0 4px 20px rgba(60,200,200,0.25));
+    border-radius: 50%;
+    border: 3px solid rgba(60, 200, 200, 0.3);
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    object-fit: cover;
   }
 
   .hero h1 {
@@ -334,12 +344,14 @@
     font-size: 2.2rem;
     margin-bottom: 16px;
     display: block;
+    text-align: center;
   }
 
   .storage-card h3 {
     font-family: 'Playfair Display', serif;
     font-weight: 700;
     font-size: 1.25rem;
+    text-align: center;
     color: var(--charcoal);
     margin-bottom: 18px;
   }
@@ -701,7 +713,12 @@
   footer .footer-logo {
     height: 50px;
     margin-bottom: 16px;
-    opacity: 0.8;
+    opacity: 0.85;
+    border-radius: 50%;
+    border: 2px solid rgba(60, 200, 200, 0.3);
+    padding: 2px;
+    background: rgba(255, 255, 255, 0.08);
+    object-fit: cover;
   }
 
   footer p {
@@ -837,15 +854,16 @@
 <div class="support-section" id="support">
   <div class="section">
     <div class="support-box">
-      <span class="heart">🤍</span>
+      <span class="heart">❤️</span>
       <h3>Support Our Flock</h3>
       <p>Donations are never required — but always appreciated. Every contribution helps with feed, bedding, and keeping our hens healthy and happy.</p>
       <a href="https://venmo.com/u/megannanke" target="_blank" rel="noopener" class="venmo-btn">
         💚 Donate via Venmo
       </a>
       <div class="venmo-handle">@megannanke</div>
+      <p style="margin-top: 16px; color: var(--text-light); font-size: 0.9rem;">Please return our egg cartons!</p>
     </div>
-    <p style="margin-top: 28px; color: var(--text-muted); font-size: 0.9rem;">Thank you for supporting local, small-scale farming! 🐔</p>
+    <p style="margin-top: 28px; color: var(--text-muted); font-size: 1.2rem; font-weight: 500;">Thank you for supporting local, small-scale farming! 🐔</p>
   </div>
 </div>
 
