@@ -511,18 +511,24 @@
   .hen-card {
     background: white;
     border-radius: var(--radius-sm);
-    padding: 22px 24px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--tan);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
+    overflow: hidden;
   }
 
   .hen-card:hover {
     transform: translateY(-3px);
     box-shadow: var(--shadow-md);
+  }
+
+  .hen-card-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 22px 24px;
+    cursor: pointer;
+    position: relative;
   }
 
   .egg-swatch {
@@ -532,6 +538,16 @@
     flex-shrink: 0;
     border: 2px solid rgba(0,0,0,0.08);
     box-shadow: inset 0 -4px 8px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hen-card-header:hover .egg-swatch {
+    transform: scale(1.08);
+    box-shadow: inset 0 -4px 8px rgba(0,0,0,0.1), 0 3px 10px rgba(0,0,0,0.12);
+  }
+
+  .hen-info {
+    flex: 1;
   }
 
   .hen-card .hen-info h4 {
@@ -545,6 +561,65 @@
   .hen-card .hen-info p {
     font-size: 0.88rem;
     color: var(--text-light);
+  }
+
+  .hen-tap-hint {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    opacity: 0.5;
+    margin-top: 2px;
+  }
+
+  .hen-dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 24px;
+  }
+
+  .hen-card.open .hen-dropdown {
+    max-height: 500px;
+    padding: 0 24px 20px;
+  }
+
+  .hen-card.open {
+    transform: none;
+  }
+
+  .hen-dropdown-inner {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding-top: 6px;
+    border-top: 1px solid var(--tan);
+  }
+
+  .hen-dropdown-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 2px solid var(--tan);
+  }
+
+  .hen-dropdown-text {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    padding-top: 6px;
+  }
+
+  @media (max-width: 480px) {
+    .hen-dropdown-inner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hen-dropdown-img {
+      width: 140px;
+      height: 140px;
+    }
   }
 
   /* ============ TIPS SECTION ============ */
@@ -953,59 +1028,131 @@
 
   <div class="hens-grid">
     <div class="hen-card">
-      <div class="egg-swatch" style="background: linear-gradient(145deg, #DEBB82, #C9A262);"></div>
-      <div class="hen-info">
-        <h4>Buff Orpingtons</h4>
-        <p>Light brown eggs — gentle, fluffy birds</p>
+      <div class="hen-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="egg-swatch" style="background: linear-gradient(145deg, #DEBB82, #C9A262);"></div>
+        <div class="hen-info">
+          <h4>Buff Orpingtons</h4>
+          <p>Light brown eggs — gentle, fluffy birds</p>
+          <span class="hen-tap-hint">tap egg to learn more</span>
+        </div>
+      </div>
+      <div class="hen-dropdown">
+        <div class="hen-dropdown-inner">
+          <img class="hen-dropdown-img" src="images/buff-orpington.jpg" alt="Buff Orpington hen" loading="lazy">
+          <p class="hen-dropdown-text">Big, fluffy golden birds from England known for their sweet, docile personalities. Excellent mothers and reliable layers of about 200–280 light brown eggs per year. A backyard favorite!</p>
+        </div>
       </div>
     </div>
     <div class="hen-card">
-      <div class="egg-swatch" style="background: linear-gradient(145deg, #F7ECD6, #E8DABD);"></div>
-      <div class="hen-info">
-        <h4>Sussex</h4>
-        <p>Cream to light brown eggs</p>
+      <div class="hen-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="egg-swatch" style="background: linear-gradient(145deg, #F7ECD6, #E8DABD);"></div>
+        <div class="hen-info">
+          <h4>Sussex</h4>
+          <p>Cream to light brown eggs</p>
+          <span class="hen-tap-hint">tap egg to learn more</span>
+        </div>
+      </div>
+      <div class="hen-dropdown">
+        <div class="hen-dropdown-inner">
+          <img class="hen-dropdown-img" src="images/sussex.jpg" alt="Light Sussex hen" loading="lazy">
+          <p class="hen-dropdown-text">A classic British dual-purpose breed dating back to the 1800s. Friendly and curious, Sussex hens lay 250+ cream to light brown eggs per year. One of the oldest chicken breeds in the world.</p>
+        </div>
       </div>
     </div>
     <div class="hen-card">
-      <div class="egg-swatch" style="background: linear-gradient(145deg, #9E6B45, #7D5230);"></div>
-      <div class="hen-info">
-        <h4>Rhode Island Reds</h4>
-        <p>Rich brown eggs — classic farm favorite</p>
+      <div class="hen-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="egg-swatch" style="background: linear-gradient(145deg, #9E6B45, #7D5230);"></div>
+        <div class="hen-info">
+          <h4>Rhode Island Reds</h4>
+          <p>Rich brown eggs — classic farm favorite</p>
+          <span class="hen-tap-hint">tap egg to learn more</span>
+        </div>
+      </div>
+      <div class="hen-dropdown">
+        <div class="hen-dropdown-inner">
+          <img class="hen-dropdown-img" src="images/rhode-island-red.jpg" alt="Rhode Island Red hen" loading="lazy">
+          <p class="hen-dropdown-text">America's most popular backyard breed, developed in Rhode Island in the 1890s. Hardy and dependable, they lay about 250–300 rich brown eggs per year and thrive in almost any climate.</p>
+        </div>
       </div>
     </div>
     <div class="hen-card">
-      <div class="egg-swatch" style="background: linear-gradient(145deg, #8DD4D8, #9AC8A4);"></div>
-      <div class="hen-info">
-        <h4>Easter Eggers</h4>
-        <p>Blue &amp; green eggs — always a surprise</p>
+      <div class="hen-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="egg-swatch" style="background: linear-gradient(145deg, #8DD4D8, #9AC8A4);"></div>
+        <div class="hen-info">
+          <h4>Easter Eggers</h4>
+          <p>Blue &amp; green eggs — always a surprise</p>
+          <span class="hen-tap-hint">tap egg to learn more</span>
+        </div>
+      </div>
+      <div class="hen-dropdown">
+        <div class="hen-dropdown-inner">
+          <img class="hen-dropdown-img" src="images/easter-egger.jpg" alt="Easter Egger hen" loading="lazy">
+          <p class="hen-dropdown-text">Fun mixed-breed hens that carry the blue-egg gene. Each hen lays a different shade — blue, green, pink, or cream — about 200–280 eggs per year. No two Easter Eggers look quite alike!</p>
+        </div>
       </div>
     </div>
     <div class="hen-card">
-      <div class="egg-swatch" style="background: linear-gradient(145deg, #98AD72, #7B9458);"></div>
-      <div class="hen-info">
-        <h4>Olive Eggers</h4>
-        <p>Olive green eggs — unique beauties</p>
+      <div class="hen-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="egg-swatch" style="background: linear-gradient(145deg, #98AD72, #7B9458);"></div>
+        <div class="hen-info">
+          <h4>Olive Eggers</h4>
+          <p>Olive green eggs — unique beauties</p>
+          <span class="hen-tap-hint">tap egg to learn more</span>
+        </div>
+      </div>
+      <div class="hen-dropdown">
+        <div class="hen-dropdown-inner">
+          <img class="hen-dropdown-img" src="images/olive-egger.jpg" alt="Olive Egger hen" loading="lazy">
+          <p class="hen-dropdown-text">A cross between dark-egg layers (like Marans) and blue-egg layers. They produce beautiful olive-toned eggs in shades from sage to deep army green. Each hen's exact color is unique!</p>
+        </div>
       </div>
     </div>
     <div class="hen-card">
-      <div class="egg-swatch" style="background: linear-gradient(145deg, #D4A05A, #B8883E);"></div>
-      <div class="hen-info">
-        <h4>Cinnamon Queens</h4>
-        <p>Large brown eggs — prolific layers</p>
+      <div class="hen-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="egg-swatch" style="background: linear-gradient(145deg, #D4A05A, #B8883E);"></div>
+        <div class="hen-info">
+          <h4>Cinnamon Queens</h4>
+          <p>Large brown eggs — prolific layers</p>
+          <span class="hen-tap-hint">tap egg to learn more</span>
+        </div>
+      </div>
+      <div class="hen-dropdown">
+        <div class="hen-dropdown-inner">
+          <img class="hen-dropdown-img" src="images/cinnamon-queen.jpg" alt="Cinnamon Queen hen" loading="lazy">
+          <p class="hen-dropdown-text">A golden-brown hybrid bred for egg production. They start laying early and produce around 250–300 large brown eggs per year. Sweet, calm, and social — great for families.</p>
+        </div>
       </div>
     </div>
     <div class="hen-card">
-      <div class="egg-swatch" style="background: linear-gradient(145deg, #5C3A20, #3E2510);"></div>
-      <div class="hen-info">
-        <h4>Marans</h4>
-        <p>Dark chocolate brown eggs</p>
+      <div class="hen-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="egg-swatch" style="background: linear-gradient(145deg, #5C3A20, #3E2510);"></div>
+        <div class="hen-info">
+          <h4>Marans</h4>
+          <p>Dark chocolate brown eggs</p>
+          <span class="hen-tap-hint">tap egg to learn more</span>
+        </div>
+      </div>
+      <div class="hen-dropdown">
+        <div class="hen-dropdown-inner">
+          <img class="hen-dropdown-img" src="images/marans.jpg" alt="Cuckoo Marans hen" loading="lazy">
+          <p class="hen-dropdown-text">French breed famous for laying the darkest brown eggs of any chicken. Originally from the port town of Marans, France. Quiet, gentle birds that are a joy to keep.</p>
+        </div>
       </div>
     </div>
     <div class="hen-card">
-      <div class="egg-swatch" style="background: linear-gradient(145deg, #FFFDF5, #F5EDD6);"></div>
-      <div class="hen-info">
-        <h4>Leghorns</h4>
-        <p>Classic white eggs — energetic foragers</p>
+      <div class="hen-card-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="egg-swatch" style="background: linear-gradient(145deg, #FFFDF5, #F5EDD6);"></div>
+        <div class="hen-info">
+          <h4>Leghorns</h4>
+          <p>Classic white eggs — energetic foragers</p>
+          <span class="hen-tap-hint">tap egg to learn more</span>
+        </div>
+      </div>
+      <div class="hen-dropdown">
+        <div class="hen-dropdown-inner">
+          <img class="hen-dropdown-img" src="images/leghorn.jpg" alt="White Leghorn hen" loading="lazy">
+          <p class="hen-dropdown-text">Energetic Italian breed and the world's top white-egg producer. Athletic and independent, they lay about 280–320 eggs per year. Known for their big floppy combs and lively personalities.</p>
+        </div>
       </div>
     </div>
   </div>
